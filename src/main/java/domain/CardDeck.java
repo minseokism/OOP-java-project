@@ -8,11 +8,16 @@ import java.util.*;
 public class CardDeck {
     private static final String[] SUITS = {"spade", "diamond", "club", "heart"};
     private static final int CARD_COUNT = 13;
-    private List<Card> cards = new LinkedList<Card>();
+    private List<Card> cards;
 
     public CardDeck() {
+        cards = createCard();
+        Collections.shuffle(cards);
+    }
+
+    public List<Card> createCard() {
         List<Card> cards = new LinkedList<Card>();
-        String denomination = "";
+        String denomination;
 
         for(String suit : SUITS) {
             for(int i = 1 ; i <= CARD_COUNT ; i++) {
@@ -26,9 +31,7 @@ public class CardDeck {
             }
         }
 
-        Collections.shuffle(cards);
-
-        this.cards = cards;
+        return cards;
     }
 
     public Card draw() {
