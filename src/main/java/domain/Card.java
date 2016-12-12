@@ -6,25 +6,29 @@ package domain;
 public class Card {
     private String suit;
     private String denomination;
-    private int number;
+    private int point;
 
-    public Card(String suit, String denomination) {
+    public Card(String suit, int number) {
         this.suit = suit;
-        this.denomination = denomination;
-        this.number = denominationToNumber(denomination);
+        this.denomination = numberToDenomination(number);
+        this.point = numberToPoint(number);
     }
 
-    public int denominationToNumber(String denomination) {
-        if (denomination.equals("A")) {
-            return 1;
-        } else if (denomination.equals("J")) {
-            return 10;
-        } else if (denomination.equals("Q")) {
-            return 10;
-        } else if (denomination.equals("K")) {
-            return 10;
-        }
-        return Integer.parseInt(denomination);
+    public String numberToDenomination(int number) {
+        String denomination;
+
+        if( number == 1) denomination = "A";
+        else if ( number == 11 ) denomination = "J";
+        else if ( number == 12 ) denomination = "Q";
+        else if ( number == 13 ) denomination = "K";
+        else denomination = number+"";
+
+        return denomination;
+    }
+
+    public int numberToPoint(int number) {
+        if (number > 10) number = 10;
+        return number;
     }
 
     public String getSuit() {
@@ -35,12 +39,12 @@ public class Card {
         this.suit = suit;
     }
 
-    public int getNumber() {
-        return number;
+    public int getPoint() {
+        return point;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public String getDenomination() {
