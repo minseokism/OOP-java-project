@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,11 +9,27 @@ import java.util.List;
 public class Gamer {
     private List<Card> cards;
 
+    public Gamer() {
+        this.cards = new ArrayList();
+    }
+
     public void recieveCard(Card card) {
         cards.add(card);
+        showCards();
+    }
+
+    public void showCards() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("현재 카드 목록 \n");
+        for(Card card : cards) {
+            sb.append(card.toString());
+            sb.append("\n");
+        }
+
+        System.out.println(sb);
     }
 
     public List<Card> openCards() {
-        return null;
+        return this.cards;
     }
 }
