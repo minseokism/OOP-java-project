@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Created by minseokism on 2016-11-25.
  */
-public class Gamer {
+public class Dealer implements Player{
     private List<Card> cards;
 
-    public Gamer() {
+    public Dealer() {
         this.cards = new ArrayList();
     }
 
@@ -20,7 +20,7 @@ public class Gamer {
 
     public void showCards() {
         StringBuilder sb = new StringBuilder();
-        sb.append("현재 카드 목록 \n");
+        System.out.println("현재 카드 목록");
         for(Card card : cards) {
             sb.append(card.toString());
             sb.append("\n");
@@ -32,4 +32,6 @@ public class Gamer {
     public List<Card> openCards() {
         return this.cards;
     }
+
+    public void turnOff() {}
 }
